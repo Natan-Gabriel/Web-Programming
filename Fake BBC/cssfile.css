@@ -1,0 +1,374 @@
+html,body,tot,div,navbar,header1,hai
+{
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+    overflow-x: hidden; 
+ 
+}
+
+.doc
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+}
+
+ul.navbar {
+  position:absolute;
+  top:0%;
+  left:0%;
+  width:100%;
+  height:5.7%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  list-style-type: none;
+}
+
+.triangle-down {
+       position:absolute;
+	width: 0;
+	height: 0;
+	border-left: 250px solid transparent;
+	border-right: 250px solid transparent;
+	border-top: 50px solid;
+    color:grey;
+}
+
+.square {
+  height: 45px;
+  width: 45px;
+  background-color: black;
+}
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 12px solid transparent;
+	border-left: 20px solid ;
+	border-bottom: 12px solid transparent;
+        color:white;
+}
+
+
+/*img {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1)haidee;
+}*/
+
+.i11{
+display:inline-block;
+  
+  display:inline-block;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 150%, black 200%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(150%,rgba(0,0,0,0.65)), color-stop(200%,black)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 150%,rgba(0,0,0,0.65) 200%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 150%,black 200%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 150%,black 200%); /* IE10+ */
+  background: linear-gradient(to bottom,150%,black 200%); /* W3C */
+  
+
+}
+
+
+
+.i{
+display:inline-block;
+  
+  display:inline-block;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,0%,black 100%); /* W3C */
+  
+
+}
+
+img{
+position:relative;
+  z-index:-1;
+  display:block;
+}
+
+
+
+.slideshow-wrapper {
+    position:relative;
+    float: left;
+}
+
+.slideshow-wrapper:before {
+    content: '';
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+    z-index: 0;
+}
+
+
+
+
+div.hai {
+  position:absolute;
+  width:100px;
+  height:100px;
+  top:0%;
+  left:0%;
+  background-color:black;
+}
+
+div.menu{
+position:absolute;
+top:16%;
+width:82%;
+height:24.5%;
+left:9%;
+right:9%;
+}
+
+div.news-menu{
+position:absolute;
+top:78%;
+width:81%;
+height:24.5%;
+left:8.5%;
+right:9%;
+}
+
+div.news-menu1{
+position:absolute;
+top:90%;
+width:81%;
+height:24.5%;
+left:8.5%;
+right:9%;
+}
+
+div.delimiter{
+  position: absolute;
+  top:-10%;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 16px;
+}
+
+
+.row,.column,.row-for2,.column-for2 {
+  box-sizing: border-box;
+}
+
+.row {
+  //padding: 4px;
+  margin: 0px 0px 2px 0px;
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+
+  flex: 40%;
+  margin:0px 15px 0px 0px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.title-for11 {
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  position: absolute;
+  top: 100%;
+  left: 10px;
+
+}
+.subtitle-for11 {
+  position: absolute;
+  top: 145%;
+  color:grey;
+  left: 10px;
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-weight: 100;
+}
+.sign-for11{
+  position: absolute;
+  top: 187%;
+  left: 8px;
+  height:12px;
+  width:2px;
+  
+}
+.topic-for11{
+  position: absolute;
+  top: 185%;
+  left: 15px;
+  height:28px;
+  width:20px;
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-weight: 100;
+  color:grey;
+  
+}
+
+.title-for12{
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-size: 0.8rem;
+  font-weight: 100;
+  position: absolute;
+  top: 40%;
+  left: 10px;
+}
+.sign-for12{
+  position: absolute;
+  top: 87%;
+  left: 10px;
+  height:12px;
+  width:2px;
+  
+}
+.topic-for12-0{
+  position: absolute;
+  top: 85%;
+  left:-5%;
+  height:28px;
+  width:100px;
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-weight: 100;
+  color:grey;
+  
+}
+
+.topic-for12{
+  position: absolute;
+  top: 85%;
+  left:5%;
+  height:28px;
+  width:100px;
+  font-family: Arial,Helvetica,freesans,sans-serif;
+  font-weight: 100;
+  color:grey;
+  
+}
+
+
+.sign-delimiter{
+  position: absolute;
+  height:18px;
+  width:4px;
+  
+}
+.topic-delimiter{
+  position: absolute;
+  height:28px;
+  width:90px;
+  left:10px;
+}
+
+.row-for2 {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column-for2 {
+  -ms-flex: 33%; /* IE 10 */
+  flex: 33%;
+  padding: 0 4px;
+}
+
+.title-for21{
+  position: absolute;
+  top: 65%;
+  height:25%;
+  width:33%;
+  font-size: 1.25rem;
+  font-weight: 100;
+  font-family:Arial,Helvetica,freesans,sans-serif;
+  
+}
+.subtitle-for21{
+  position: absolute;
+  top: 101%;
+  height:25%;
+  width:33%;
+  font-size: 1.1rem;
+  font-family:Arial,Helvetica,freesans,sans-serif;
+  color:grey;
+
+  
+}
+
+.sign-for21{
+  position: absolute;
+  top: 164%;
+  height:12px;
+  width:2px;
+  
+  
+}
+.topic-for21{
+  position: absolute;
+  top: 149%;
+  height:15%;
+  width:100%;
+  font-size: 1.1rem;
+  font-family:Arial,Helvetica,freesans,sans-serif;
+  color:grey;
+  
+}
+
+.subtitle-for23{
+  position: absolute;
+  top: 90%;
+  height:25%;
+  width:33%;
+  font-size: 1.1rem;
+  font-family:Arial,Helvetica,freesans,sans-serif;
+  color:grey;
+
+  
+}
+

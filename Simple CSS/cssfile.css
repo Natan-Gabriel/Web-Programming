@@ -1,0 +1,71 @@
+.problem13 {
+    position:fixed;
+    width:300px;
+    height: 0px;
+    text-indent: 30px;
+}
+
+.lineTop {
+		position: fixed;
+		width: 310px;
+  		height: 5px;
+  		background-color: rgba(76, 175, 80, 0.0);
+		left: 0%;
+		top: 0%;
+
+
+		border-style: solid;
+		border-color: rgba(76, 175, 80, 1.0);
+		border-width: medium;
+ 
+}
+
+.lineRight {
+		position: fixed;
+
+		width: 5px;
+  		height: 310px;
+  		background-color: rgba(76, 175, 80, 0.0);
+			
+		left: 305px;
+		top: 0%;
+
+		border-style: solid;
+		border-color: rgba(76, 175, 80, 1.0);
+		border-width: medium;
+		
+}
+
+.lineLeft {
+		position: fixed;
+
+		width: 5px;
+  		height: 310px;
+  		background-color: rgba(76, 175, 80, 0.0);
+
+		left: 0%;
+		top: 0%;	
+
+		border-style: solid;
+		border-color: rgba(76, 175, 80, 1.0);
+		border-width: medium;
+
+
+}
+.lineBottom {
+		position: fixed;
+
+
+		width: 310px;
+  		height: 5px;
+  		background-color: rgba(76, 175, 80, 0.0);
+	
+		left: 0px;
+		top: 305px;
+
+		border-style: solid;
+		border-color: rgba(76, 175, 80, 1.0);
+		border-width: medium;
+
+
+}

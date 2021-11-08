@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>AddNewDestination</title>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["cost"].value;
+            if (x == "" || isNaN(x)) {
+                alert("Cost must be a number");
+                return false;
+            }
+            else {
+                alert("Success");
+                return true;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <form onsubmit="return validateForm()" name="myForm" action="/Main/SaveDestination" method="GET">
+            <!--id : <input type="text" id="IDid" name="id" /> <br />-->
+            location : <input type="text" id="IDlocation" name="location" /> <br />
+            country : <input type="text" id="IDcountry" name="country" /> <br />
+            description : <input type="text" id="IDdescription" name="description" /> <br />
+            targets : <input type="text" id="IDtargets" name="targets" /> <br />
+            cost : <input type="text" id="IDcost" name="cost" /> <br />
+            <input type="submit" value="Add destination" />
+        </form>
+    </div>
+</body>
+</html>

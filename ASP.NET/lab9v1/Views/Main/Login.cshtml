@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Destinations</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        var curr = "";
+        var currPage = 0;
+        var step = 4;
+
+        $(document).ready(function () {
+            $("#login").click(function () {
+                $.get("/Main/GetDestinations", { currPage: currPage },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        
+                    });
+
+            });
+
+        });
+
+
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="~/style.css" />
+</head>
+<body>
+    <div>
+        <form action="/Main/Login" method="GET">
+            name : <input type="text" id="name" name="name" /> <br />
+            password : <input type="text" id="password" name="password" /> <br />
+            <input type="submit" value="Login" />
+        </form>
+    </div>
+</body>
+</html>

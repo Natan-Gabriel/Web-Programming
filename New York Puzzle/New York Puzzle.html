@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PUZZLE</title>
+<style>
+canvas {
+	width:600px;
+	height:600px;
+    border: 4px solid yellow ;
+
+}
+body,div {width:100%;}
+
+</style>
+</head>
+<body>
+
+
+<div style="width:100%;">
+
+<div style="text-align:center; height:10px">
+<h1 id="message"></h1>
+</div>
+
+<div style="position:absolute;left:0%;top:10%;"><h1 id="moves"></h1></div>
+
+
+<div style="position:absolute;left:0%;top:20%">
+<canvas id="canvas" height="600px" width="600px"></canvas>
+</div>
+
+
+<div style="position:absolute;left:50%;top:10%">
+<h1>The result</h1>
+<div>
+<img src="newyork1.jpg" id="elem1" width="150" height="150">
+<img src="newyork2.jpg" id="elem2" width="150" height="150">
+<img src="newyork3.jpg" id="elem3" width="150" height="150">
+<img src="newyork4.jpg" id="elem4" width="150" height="150">
+</div>
+<div>
+<img src="newyork5.jpg" id="elem5" width="150" height="150">
+<img src="newyork6.jpg" id="elem6" width="150" height="150">
+<img src="newyork7.jpg" id="elem7" width="150" height="150">
+<img src="newyork8.jpg" id="elem8" width="150" height="150">
+</div>
+<div>
+<img src="newyork9.jpg" id="elem9" width="150" height="150">
+<img src="newyork10.jpg" id="elem10" width="150" height="150">
+<img src="newyork11.jpg" id="elem11" width="150" height="150">
+<img src="newyork12.jpg" id="elem12" width="150" height="150">
+</div>
+<div>
+<img src="newyork13.jpg" id="elem13" width="150" height="150">
+<img src="newyork14.jpg" id="elem14" width="150" height="150">
+<img src="newyork15.jpg" id="elem15" width="150" height="150">
+<img src="newyork16.jpg" id="elem16" width="150" height="150">
+</div>
+
+</div>
+
+
+</div>
+
+
+<script>
+var canvas=document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var empty=16;
+var moves=-1;
+function shuffle(array) {
+	  var currentIndex = array.length
+	  var temporaryValue, randomIndex;
+
+	  while (0 !== currentIndex) {
+
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+	  }
+
+	  return array;
+	}
+var ar=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
+im=shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]);
+
+for(var i=0;i<=15;i++){
+	if(im[i]==0)
+		empty=i+1;
+}
+
+var restart=0;
+function won(){
+	m=document.getElementById("message");
+	m.innerHTML="You won";
+	restart=1;
+	moves=-1;
+}
+
+function draw(){
+	moves++;
+	mov=document.getElementById("moves");
+	mov.innerHTML="MOVES: "+ moves.toString();
+	m=document.getElementById("message");
+	m.innerHTML="";
+    var t;
+    t=0;
+    if(restart==1){
+	
+	    im=shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0]);
+		for(var i=0;i<=15;i++){
+			if(im[i]==0)
+				empty=i+1;
+		}
+		
+	    ctx.clearRect(0,0,600,600);
+	    restart=0;
+    }
+	
+	for(var i=0;i<=3;i++){
+    	for(var j=0;j<=3;j++){
+    		   component(i,j);    		
+    	}
+    }
+	
+	for(var i=0;i<=15;i++){
+		if(im[i]!=ar[i])
+			t=1;	
+	}
+
+	if(t==0){
+		won();
+	}
+	
+}
+
+function component(x, y) {
+    
+    var text="elem";
+    z=x+4*y;
+    z=im[z];
+    text=text+z.toString();
+    if(z!=0)
+    {
+    	var img=document.getElementById(text);
+    	var pat=ctx.createPattern(img,"repeat");
+    	ctx.fillStyle=pat;
+    }
+    
+    else
+    {
+    	ctx.fillStyle="white";
+    }
+    
+    ctx.fillRect(150*x,150*y,150,150);    
+}
+
+function moveup() {
+	ctx.clearRect(0,0,600,600);
+	if(restart==1)
+		{
+		draw();
+		return;
+		}
+    if(empty==13||empty==14||empty==15||empty==16){
+    	moves--;
+    	draw();
+    } 
+    else{
+    	text="elem";
+    	var curr=empty;
+    	empty=empty+4;
+    	var next=empty;
+        im[curr-1]=im[next-1];
+        im[next-1]=0;
+        draw();
+    	
+    }
+}
+
+function movedown() {
+	ctx.clearRect(0,0,600,600);
+	if(restart==1)
+	{
+	draw();
+	return;
+	}
+	if(empty==1||empty==2||empty==3||empty==4) {
+		moves--;
+		draw();
+    }
+    else{
+    	text="elem";
+    	var curr=empty;
+    	empty=empty-4;
+    	var next=empty;
+        im[curr-1]=im[next-1];
+        im[next-1]=0;
+        draw();
+        
+    }
+}
+
+function moveleft() {
+	ctx.clearRect(0,0,600,600);
+	
+	if(restart==1)
+	{
+		draw();
+		return;
+	}
+	if(empty==16||empty==12||empty==8||empty==4) {
+		moves--;  
+		draw();
+	    }
+	else{
+		text="elem";
+		var curr=empty;
+		empty=empty+1;
+		var next=empty;
+		im[curr-1]=im[next-1];
+		im[next-1]=0;
+		draw();
+		
+  
+	}
+}
+
+function moveright() {
+	ctx.clearRect(0,0,600,600);
+	if(restart==1)
+	{
+	moves--;
+	draw();
+	return;
+	}
+    if(empty==1||empty==5||empty==9||empty==13) {
+	    moves--;
+	    draw();
+    }
+	else{
+		text="elem";
+		var curr=empty;
+		empty=empty-1;
+		var next=empty;
+		im[curr-1]=im[next-1];
+		im[next-1]=0;
+		draw();
+	}
+}
+
+window.addEventListener('keydown', function (e) {
+    key = e.keyCode;
+    if(key==37){
+    	e.preventDefault();
+    	moveleft();
+    }
+    if(key==38){
+    	e.preventDefault();
+    	moveup();
+    }
+    if(key==39){
+    	e.preventDefault();
+    	moveright();
+    }
+    if(key==40){
+    	e.preventDefault();
+    	movedown();
+    }
+	if(key==13){
+		e.preventDefault();
+		init();
+	}
+    
+});
+
+function init(){
+draw();
+}
+
+</script>
+
+</body>
+
+</html>

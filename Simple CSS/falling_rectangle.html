@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+.d1{
+  width:100%;
+  height:0px;
+  background-image: linear-gradient(white,rgb(0, 0, 204)); 
+  opacity:0;
+  transition: height 8s,opacity 8s;
+  transition-timing-function: linear;
+ 
+}
+
+
+hr{ 
+  height: 50px;
+  background-color: blue;
+  margin: 0;
+}
+
+
+
+#menu:hover div:not(:hover) + hr{ 
+    display:block; 
+    text-decoration: none; 
+}
+#menu:hover div:not(:hover){ 
+    height:650px;
+    opacity: 1;
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="menu">
+        <div class="d1"></div>
+        <hr>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        
+        .button {
+            
+            font: bold 11px Arial;
+            text-decoration: none;
+            background-color: #EEEEEE;
+            color: #333333;
+            padding: 2px 6px 2px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 100px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+
+        ol {
+            background: #ff9999;
+            padding: 20px;
+        }
+
+        ul {
+            background: #3399ff;
+            padding: 20px;
+        }
+
+        ol li {
+            background: #ffe5e5;
+            padding: 5px;
+            margin-left: 35px;
+        }
+
+        ul li {
+            background: #cce5ff;
+            margin: 5px;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="~/style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Destinations</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        var curr = "";
+        var currPage = 0;
+        var step = 4;
+
+        $(document).ready(function () {
+            $("#button").click(function () {
+                $.get("/Main/GetDestinations", { currPage: currPage },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        
+                    });
+
+            });
+
+            $("#browse").click(function () {
+                $.get("/Main/GetDestinationsSorted", { currPage: currPage },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        
+                    });
+
+            });
+
+            $("#prev").click(function () {
+                currPage -= step;
+                if (currPage < 0)
+                    currPage += step;
+                $.get("/Main/GetDestinationsSorted", { currPage: currPage },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        
+                    });
+
+            });
+            $("#next").click(function () {
+                currPage += step;
+                $.get("/Main/GetDestinationsSorted", { currPage: currPage },
+                    function (data, status) {
+                        $("#maindiv").html(data);
+                        
+                    });
+
+            });
+
+            $("#delete").click(function () {
+                if (confirm('Are you sure you want to delete this from the database?')) {
+
+
+                    $.post("/Main/DeleteDestination", { curr: curr },
+                        function (data, status) {
+                            if (data == "") {
+                                $.post("/Main/Logout", { curr: curr },
+                                    function (data, status) {
+                                        console.log(status)
+                                    });
+                            }
+                            else {
+                                console.log(status);
+                                alert("Success");
+                            }
+
+                           
+                        });
+                    console.log('deleted from the database.');
+                }
+                else {
+                    ;
+                }
+
+            });
+
+            $("#logout").click(function () {
+                $.post("/Main/Logout", { curr: curr },
+                    function (data, status) {
+                        console.log(status)
+                    });
+
+            });
+
+
+        });
+
+        $(function () {
+            $(document).on('click', '#maindiv tr', function () {
+                curr = $(this).index();
+                console.log($(this).index());
+                console.log($(this).text());
+
+                localStorage.setItem("curr", curr);
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <input class="button" id="button" type="button" value="Get destinations" /><br>
+        Destinations:<br />
+        <!--<input id="update" type="button" value="Update destination" />-->
+        <table id="maindiv"></table><br />
+        <div id="main"></div><br />
+        
+        <a href="AddDestination" class="button">Add new destination</a>
+        <a href="UpdateDestination" class="button">Update</a>
+        <input id="delete" type="submit" value="Delete destination" />
+        <!--<li><a href="Main/Logout">Logout</a></li>-->
+
+        <!--<input id="delete" type="button" value="Delete destination" />-->
+        <button id="browse" class="button">Browse destinations sorted by country</button>
+        <button id="prev" class="button">Go to previous page</button>
+        <button id="next" class="button">Go to next page</button>
+        <!--<button id="logout">Logout</button>-->
+        <form action="/Main/AddDestination" method="GET">
+            <input class="button" id="add" type="button" value="add2.0" />
+        </form>
+
+        <form action="/Main/Logout" method="GET">
+            <input class="button" id="delete" type="submit" value="Logout" />
+        </form>
+        
+    </div>
+</body>
+</html>

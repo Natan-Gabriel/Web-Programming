@@ -1,0 +1,95 @@
+<!doctype html> 
+<html> 
+<head> 
+<script src="jquery-2.0.3.js"></script>
+<style> 
+.dragit
+  {
+	position:absolute;
+    background: red;
+    width: 50%;
+    height: 50px;
+    cursor: move;
+    position: relative;
+  }
+
+</style>
+</head>
+<body>
+<div class="dragit" id="dragit1">Drag me 1</div>
+<div class="dragit" id="dragit2">Drag me 2</div>
+<div class="dragit" id="dragit3">Drag me 3</div>
+<div class="dragit" id="dragit4">Drag me 4</div>
+<div class="dragit" id="dragit5">Drag me 5</div>
+<div class="dragit" id="dragit6">Drag me 6</div>
+</body>
+
+<script>
+l=["#dragit1","#dragit2","#dragit3","#dragit4","#dragit5","#dragit6"];
+ltop=[0,100,200,300,400,500];
+
+$(document).ready(function(){
+	for(var i=0;i<l.length;i++){
+        $(l[i]).css({position:'absolute',top: ltop[i], left: 300});
+        }
+});
+
+function mouseUpController(divId){
+
+	var pos = $(divId).first().position().top;
+	var new_index=Math.floor(pos/100);
+	var old_index = l.indexOf(divId);
+	//if(a>p11){
+	//	p11+=1;
+	//}
+	l=array_move(l,old_index,new_index);
+
+	for(var i=0;i<l.length;i++){
+		$(l[i]).animate({top: ltop[i], left: 300});
+        }
+};
+
+
+function mouseDownController(divId){
+	var a = l.indexOf(divId);
+	l=array_move(l,a,0);
+
+	for(var i=1;i<l.length;i++){
+		$(l[i]).animate({top: ltop[i], left: 300},800);
+	}
+};
+
+//function to move an element from an old_position to a new_position
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; 
+};
+
+
+$('div').mousedown(function(e){
+	mouseDownController('#'+$(e.target).attr('id'));
+	var dr = $(this).addClass("drag");
+	//height = dr.outerHeight();
+	//width = dr.outerWidth();
+	ypos = dr.offset().top - e.pageY,//position in stack
+	xpos = dr.offset().left - e.pageX;
+	$('div').mousemove( function(e){ 
+		var itop = e.pageY + ypos;
+		var ileft = e.pageX + xpos ;
+		if(dr.hasClass("drag")){
+			dr.offset({top: itop,left: ileft});
+		}
+	}).mouseup(function(e){
+			dr.removeClass("drag");
+			mouseUpController('#'+$(e.target).attr('id'));
+
+	});
+});
+</script>
+</html>

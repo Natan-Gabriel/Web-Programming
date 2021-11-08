@@ -1,0 +1,72 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Destinations</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            curr = localStorage.getItem("curr");
+
+            $.get("/Main/GetSelectedDestination", { curr: localStorage.getItem("curr") },
+                function (data, status) {
+                    var res = data.split(";");
+                    $("#id").val(res[0]);
+                    $("#location").val(res[1]);
+                    $("#country").val(res[2]);
+                    $("#description").val(res[3]);
+                    $("#targets").val(res[4]);
+                    $("#cost").val(res[5]);
+
+                });
+
+        });
+
+        
+        function validateForm() {
+
+
+
+            var x = document.forms["myForm"]["cost"].value;
+            if (x == "" || isNaN(x)) {
+            alert("Cost must be a number");
+                return false;
+            }
+            else {
+            alert("Success");
+                return true;
+            }
+        }
+    
+
+    </script>
+</head>
+<body>
+
+    <div id="maindiv"></div><br />
+
+    <div>
+        <form onsubmit="return validateForm()"  name="myForm" action="/Main/UpdateDb" method="GET">
+            id : <input type='text' id='id' name="id" readonly="readonly"><br />
+            <!--location :<input autocomplete='off' type='text' id='location' value='MyCo' maxlength='50' size='25'><br />
+            country :<input autocomplete='off' type='text' id='country' value='MyCo' maxlength='50' size='25'><br />-->
+            location :<input type='text' id='location' name="location"><br />
+            country :<input type='text' id='country' name="country"><br />
+            description :<input autocomplete='off' type='text' id='description' value='MyCo' maxlength='50' size='25' name="description"><br />
+            targets :<input autocomplete='off' type='text' id='targets' value='MyCo' maxlength='50' size='25' name="targets"><br />
+            cost :<input autocomplete='off' type='text' id='cost' value='MyCo' maxlength='50' size='25' name="cost"><br />
+
+            <input type="submit" value="Update destination" onclick="return confirm('Are you sure you want to update this?')" />
+        </form>
+    </div>
+
+</body>
+</html>
+
+
